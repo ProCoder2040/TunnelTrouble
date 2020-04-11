@@ -21,5 +21,7 @@ elif re.search('south', command, re.IGNORECASE):
 	print ("You open the door and cautiously step inside.")
 	print ("It is suprisingly warm in here.")
 	print ("There is a door to the North, and a tunnel to the South and a tunnel to the South East")
-
+	print ("Behind the door to the North, there is a bright light.")
+	print ("In the tunnel to the South, there is an intense heat.")
+	print ("In the tunnel to the South East, there is a weird moaning noise.")
 
