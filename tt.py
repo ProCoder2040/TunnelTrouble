@@ -22,12 +22,14 @@ current_position=1
 while True:
 	print (rooms[current_position]["description"])
 	command = input("What do you want to do?")
+	if command=="exit":
+		break
 	if command in rooms[current_position]["exits"]:
 		current_position = rooms[current_position]["exits"][command]
 	else:
 		print ("I didn't understand that...")
 
-
+print ("Thanks for playing Tunnel Trouble!!!")
 
 
 
