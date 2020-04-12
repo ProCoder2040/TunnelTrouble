@@ -7,27 +7,49 @@ init()
 
 rooms = {
 	1: {
-		"description":"You are in a cave, there is a tunnel to the north and a door to the south",
-		"exits":{"south": 2, "north": 5}
+		"description":["You are in a cave, there is a tunnel to the north and a door to the south"],
+		"exits":{
+			"south": {"room_num":2, "transition": "You open the door and cautiously step inside."}, 
+			"north": {"room_num":5},
+		}
 	},
 	2: {
-		"description":"You are in a cave, there is a door to the north, a tunnel to the south and another tunnel to the south east.",
-		"exits":{"south": 3, "north": 1, "southeast": 4}
+		"description":[			
+			"It is suprisingly warm in here.",
+			"There is a door to the North, and a tunnel to the South and a tunnel to the South East.",
+			"Behind the door to the North, there is a bright light.",
+			"In the tunnel to the South, there is an intense heat.",
+			"In the tunnel to the South East, there is a faint moaning noise.",
+		],
+		"exits":{
+			"south": {"room_num":3}, 
+			"north": {"room_num":1}, 
+			"south east": {"room_num":4},
+		}
 	},
 	3: {
-		"description":"You walk into the room and are almost overwhelmed by the heat. A Lava monster simply plucks you from the ground and swallows you whole. THE END!!",
-		"exits":{"restart":1}
+		"description":["You walk into the room and are almost overwhelmed by the heat. A Lava monster simply plucks you from the ground and swallows you whole. THE END!!"],
+		"exits":{
+			"restart": {"room_num":1},
+		},
 	},
+	4: {
+		"description":["Zombie Room"],
+		"exits": {
+			"north west":{"room_num":2}
+		}
+	}
 }
-
 current_position=1
 while True:
-	print (rooms[current_position]["description"])
+	print ("\n".join(rooms[current_position]["description"]))
 	command = input("What do you want to do?")
 	if command=="exit":
 		break
 	if command in rooms[current_position]["exits"]:
-		current_position = rooms[current_position]["exits"][command]
+		if "transition" in rooms[current_position]["exits"][command]:
+			print (rooms[current_position]["exits"][command]["transition"])
+		current_position = rooms[current_position]["exits"][command]["room_num"]
 	else:		
 		print (Fore.RED + "I didn't understand that..."+Style.RESET_ALL)
 
@@ -58,7 +80,7 @@ print (Fore.GREEN + "Thanks for playing Tunnel Trouble!!!"+Style.RESET_ALL)
 # 	print ("There is a door to the North, and a tunnel to the South and a tunnel to the South East")
 # 	print ("Behind the door to the North, there is a bright light.")
 # 	print ("In the tunnel to the South, there is an intense heat.")
-# 	print ("In the tunnel to the South East, there is a weird moaning noise.")
+# 	print ("In the tunnel to the South East, there is a faint moaning noise.")
 # 	command = input("What do you want to do? ")
 # 	if re.search('North', command, re.IGNORECASE):
 
