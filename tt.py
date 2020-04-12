@@ -1,5 +1,7 @@
 import re
-
+from colorama import Fore, Back, Style
+from colorama import init
+init()
 
 
 
@@ -26,10 +28,10 @@ while True:
 		break
 	if command in rooms[current_position]["exits"]:
 		current_position = rooms[current_position]["exits"][command]
-	else:
-		print ("I didn't understand that...")
+	else:		
+		print (Fore.RED + "I didn't understand that..."+Style.RESET_ALL)
 
-print ("Thanks for playing Tunnel Trouble!!!")
+print (Fore.GREEN + "Thanks for playing Tunnel Trouble!!!"+Style.RESET_ALL)
 
 
 
