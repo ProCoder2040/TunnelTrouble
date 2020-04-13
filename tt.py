@@ -28,7 +28,8 @@ rooms = {
 		}
 	},
 	3: {
-		"description":["You walk into the room and are almost overwhelmed by the heat. A Lava monster simply plucks you from the ground and swallows you whole. THE END!!"],
+		"description":["You walk into the room and are almost overwhelmed by the heat.",
+		" A Lava monster simply plucks you from the ground and swallows you whole. THE END!!"],
 		"exits":{
 			"restart": {"room_num":1},
 		},
@@ -46,7 +47,10 @@ while True:
 	command = input("What do you want to do?")
 	if command=="exit":
 		break
-	if command in rooms[current_position]["exits"]:
+	elif command == "teleport":
+		temp = input ("Where do you want to teleport?")
+		current_position= int (temp)
+	elif command in rooms[current_position]["exits"]:
 		if "transition" in rooms[current_position]["exits"][command]:
 			print (rooms[current_position]["exits"][command]["transition"])
 		current_position = rooms[current_position]["exits"][command]["room_num"]
