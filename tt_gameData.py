@@ -45,7 +45,12 @@ rooms = {
 			Fore.BLUE + "From the North East you can see some stlactites and stalacmites.",
 		],
 		"exits":{
+			"north": {"room_num":6},
 			"south": {"room_num":1}
 		}
+	},
+	6: {
+		"description":[Fore.BLUE + "You decide to enter the room with the pickaxes clinking. You see miners wearing headtorches. They have dangerous looking pickaxes."
+		]
 	}
 }
